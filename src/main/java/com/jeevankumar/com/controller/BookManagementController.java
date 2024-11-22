@@ -16,6 +16,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookManagementController {
     private final BookService bookService;
+    @GetMapping("/allBooks")
+    public ResponseEntity<List<Book>> findAllBooks(){
+        return ResponseEntity.status(HttpStatus.OK).body(bookService.allBooks());
+    }
 
     @GetMapping("/book/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id){

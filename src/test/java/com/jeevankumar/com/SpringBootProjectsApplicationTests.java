@@ -8,6 +8,7 @@ class SpringBootProjectsApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("Start the test case...!!");
 	}
 
 }
