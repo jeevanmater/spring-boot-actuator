@@ -28,6 +28,7 @@ public class BookManagementController {
 
     @GetMapping(value = "/allBooks",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Book>> getAllBooks(){
+        System.out.println("Jeevan Kumar");
        List<Book> bookList = bookService.allBooks();
        if (!bookList.isEmpty() && bookList.size() > 1) {
            return ResponseEntity.status(HttpStatusCode.valueOf(200)).body(bookList);
