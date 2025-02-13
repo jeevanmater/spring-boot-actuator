@@ -1,0 +1,30 @@
+name: Java CI With Gradle
+on:
+ push:
+  branches:
+   - main
+ pull_request:
+  branches:
+   - main
+jobs:
+  build:
+   runs-on: ubuntu-latest
+   strategy:
+    matrix:
+     java-version: [11,17]
+   steps:
+   - name: Check out code
+     uses: actions/checkout@v3
+   - name: Set up JDK
+     uses: actions/setup-java@v3
+     with:
+      java-version: ${{matrix.java-version}}
+      distribution: adoptopenjdk
+   - name: Set up Gradle
+     uses: gradle/gradle-build-action@v2
+   - name: Buid with Gradle
+     uses: ./gradlew build --stacktrace
+   - name: Run tests
+     uses: ./gradlew test --stacktrace
+    
+   
